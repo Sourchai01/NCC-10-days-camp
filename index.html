@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NCC Camp Diary</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:#1e293b;
+padding:40px;
+border-radius:10px;
+text-align:center;
+}
+
+input{
+padding:10px;
+font-size:16px;
+margin-top:10px;
+}
+
+button{
+padding:10px 20px;
+margin-top:15px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>NCC Camp Diary</h1>
+<p>Enter your name to read the diary</p>
+
+<input id="username" placeholder="Your name">
+
+<br>
+
+<button onclick="enter()">Continue</button>
+
+</div>
+
+<script>
+
+function enter(){
+
+let name=document.getElementById("username").value;
+
+if(name===""){
+alert("Please enter your name");
+return;
+}
+
+localStorage.setItem("visitor",name);
+
+window.location="diary.html";
+
+}
+
+</script>
+
+</body>
+</html>
