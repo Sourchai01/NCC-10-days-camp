@@ -1,134 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NCC Camp Experience</title>
+<title>NCC 10 Days Camp Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-font-family:Arial;
-
-background:linear-gradient(
-to right,
-#ff4c4c 0%,
-#ff4c4c 33%,
-#2b2f7f 33%,
-#2b2f7f 66%,
-#9ad9db 66%,
-#9ad9db 100%
-);
+color:white;
 overflow:hidden;
+
+/* NCC Flag Colors */
+background:linear-gradient(
+-45deg,
+#ff4d4d,
+#ff4d4d,
+#1f2c7a,
+#1f2c7a,
+#8fd3d4,
+#8fd3d4
+);
+
+background-size:400% 400%;
+animation:bgmove 10s infinite alternate;
 }
 
-header{
-position:absolute;
-top:0;
-width:100%;
-height:120px;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
 }
+
+/* Container */
+
+.container{
+text-align:center;
+background:rgba(0,0,0,0.45);
+padding:50px;
+border-radius:15px;
+backdrop-filter:blur(12px);
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+animation:fadeIn 2s ease;
+}
+
+/* NCC Logo */
 
 .logo{
 width:90px;
-animation:float 3s infinite ease-in-out,
-glow 3s infinite alternate;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
-}
-
-@keyframes glow{
-from{filter:drop-shadow(0 0 3px gold)}
-to{filter:drop-shadow(0 0 15px gold)}
-}
-
-.container{
-background:rgba(255,255,255,0.15);
-padding:40px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-text-align:center;
-}
-
-h1{
-color:white;
 margin-bottom:20px;
+animation:logoFloat 3s ease-in-out infinite,
+logoGlow 3s alternate infinite;
+}
+
+@keyframes logoFloat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes logoGlow{
+from{filter:drop-shadow(0 0 5px gold);}
+to{filter:drop-shadow(0 0 18px gold);}
+}
+
+/* Title */
+
+.title{
+font-family:'Cinzel',serif;
+font-size:40px;
+letter-spacing:2px;
+margin-bottom:10px;
+animation:slideDown 1.5s ease;
+}
+
+.subtitle{
+font-size:18px;
+opacity:0.9;
+margin-bottom:30px;
+animation:fadeText 3s ease;
 }
 
 input{
 padding:12px;
+width:240px;
 border:none;
-border-radius:8px;
-width:220px;
-font-size:16px;
+border-radius:6px;
+outline:none;
+margin-bottom:20px;
+font-size:15px;
 }
 
 button{
-margin-top:20px;
-padding:12px 25px;
+padding:12px 28px;
 border:none;
-border-radius:8px;
-background:#ffcc00;
-font-weight:bold;
+border-radius:6px;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+font-size:16px;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-background:#ffd633;
+transform:scale(1.1);
+box-shadow:0 0 15px #00c6ff;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes slideDown{
+from{transform:translateY(-60px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+@keyframes fadeText{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
-<img src="ncc-logo.png" class="logo">
-</header>
-
 <div class="container">
 
-<h1>Enter Your Name</h1>
+<!-- Animated NCC Logo -->
+<img src="ncc-logo.png" class="logo">
 
-<input id="name" placeholder="Your name">
+<div class="title">10 Days NCC Camp Experience</div>
+
+<div class="subtitle">
+Welcome to a journey of discipline, teamwork, courage and unforgettable memories inside an NCC Camp.
+Enter your name to begin exploring this experience.
+</div>
+
+<input type="text" id="name" placeholder="Enter your name">
 
 <br>
 
-<button onclick="enter()">Enter Experience</button>
+<button onclick="enterSite()">Continue</button>
 
 </div>
 
 <script>
 
-function enter(){
+function enterSite(){
 
-let name=document.getElementById("name").value
+let name=document.getElementById("name").value;
 
-if(name==""){
-alert("Please enter your name")
-return
+if(name.trim()==""){
+alert("Please enter your name");
+return;
 }
 
-localStorage.setItem("cadetName",name)
+localStorage.setItem("visitorName",name);
 
-window.location.href="diary.html"
+window.location.href="diary.html";
 
 }
 
