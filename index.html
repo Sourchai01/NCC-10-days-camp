@@ -1,140 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NCC 10 Days Camp Experience</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<title>NCC Camp Experience</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
 body{
+margin:0;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
+flex-direction:column;
+font-family:Arial;
+
+background:linear-gradient(
+to right,
+#ff4c4c 0%,
+#ff4c4c 33%,
+#2b2f7f 33%,
+#2b2f7f 66%,
+#9ad9db 66%,
+#9ad9db 100%
+);
 overflow:hidden;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000428);
-background-size:400% 400%;
-animation:bgmove 12s infinite alternate;
 }
 
-@keyframes bgmove{
-0%{background-position:0% 50%;}
-100%{background-position:100% 50%;}
+header{
+position:absolute;
+top:0;
+width:100%;
+height:120px;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.logo{
+width:90px;
+animation:float 3s infinite ease-in-out,
+glow 3s infinite alternate;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+
+@keyframes glow{
+from{filter:drop-shadow(0 0 3px gold)}
+to{filter:drop-shadow(0 0 15px gold)}
 }
 
 .container{
-text-align:center;
-background:rgba(0,0,0,0.45);
-padding:50px;
+background:rgba(255,255,255,0.15);
+padding:40px;
 border-radius:15px;
-backdrop-filter:blur(12px);
-box-shadow:0 0 25px rgba(0,0,0,0.6);
-animation:fadeIn 2s ease;
+backdrop-filter:blur(10px);
+text-align:center;
 }
 
-.title{
-font-family:'Cinzel',serif;
-font-size:40px;
-letter-spacing:2px;
-margin-bottom:10px;
-animation:slideDown 1.5s ease;
-}
-
-.subtitle{
-font-size:18px;
-opacity:0.9;
-margin-bottom:30px;
-animation:fadeText 3s ease;
+h1{
+color:white;
+margin-bottom:20px;
 }
 
 input{
 padding:12px;
-width:240px;
 border:none;
-border-radius:6px;
-outline:none;
-margin-bottom:20px;
-font-size:15px;
+border-radius:8px;
+width:220px;
+font-size:16px;
 }
 
 button{
-padding:12px 28px;
+margin-top:20px;
+padding:12px 25px;
 border:none;
-border-radius:6px;
-background:linear-gradient(45deg,#00c6ff,#0072ff);
-color:white;
-font-size:16px;
+border-radius:8px;
+background:#ffcc00;
+font-weight:bold;
 cursor:pointer;
-transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.1);
-box-shadow:0 0 15px #00c6ff;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:scale(.9);}
-to{opacity:1;transform:scale(1);}
-}
-
-@keyframes slideDown{
-from{transform:translateY(-60px);opacity:0;}
-to{transform:translateY(0);opacity:1;}
-}
-
-@keyframes fadeText{
-from{opacity:0;}
-to{opacity:1;}
+background:#ffd633;
 }
 
 </style>
+
 </head>
 
 <body>
 
+<header>
+<img src="ncc-logo.png" class="logo">
+</header>
+
 <div class="container">
 
-<div class="title">10 Days NCC Camp Experience</div>
+<h1>Enter Your Name</h1>
 
-<div class="subtitle">
-Enter your name to explore the journey of discipline, learning and unforgettable memories.
-</div>
-
-<input type="text" id="name" placeholder="Enter your name">
+<input id="name" placeholder="Your name">
 
 <br>
 
-<button onclick="enterSite()">Continue</button>
+<button onclick="enter()">Enter Experience</button>
 
 </div>
 
 <script>
 
-function enterSite(){
+function enter(){
 
-let name=document.getElementById("name").value;
+let name=document.getElementById("name").value
 
-if(name.trim()==""){
-alert("Please enter your name");
-return;
+if(name==""){
+alert("Please enter your name")
+return
 }
 
-localStorage.setItem("visitorName",name);
+localStorage.setItem("cadetName",name)
 
-window.location.href="diary.html";
+window.location.href="diary.html"
 
 }
 
